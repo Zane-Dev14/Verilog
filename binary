@@ -1,0 +1,86 @@
+#! /usr/bin/vvp
+:ivl_version "12.0 (stable)" "(v12_0-dirty)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision + 0;
+:vpi_module "/usr/lib/ivl/system.vpi";
+:vpi_module "/usr/lib/ivl/vhdl_sys.vpi";
+:vpi_module "/usr/lib/ivl/vhdl_textio.vpi";
+:vpi_module "/usr/lib/ivl/v2005_math.vpi";
+:vpi_module "/usr/lib/ivl/va_math.vpi";
+S_0x575456a8b470 .scope module, "gatetb" "gatetb" 2 1;
+ .timescale 0 0;
+v0x575456adb680_0 .var "a", 0 0;
+v0x575456adb740_0 .var "b", 0 0;
+v0x575456adb7e0_0 .net "c", 0 0, L_0x575456adbd90;  1 drivers
+v0x575456adb8e0_0 .net "d", 0 0, L_0x575456adbea0;  1 drivers
+v0x575456adb9b0_0 .net "e", 0 0, L_0x575456adbf60;  1 drivers
+v0x575456adba50_0 .net "f", 0 0, L_0x575456adc140;  1 drivers
+v0x575456adbb20_0 .net "g", 0 0, L_0x575456adc1e0;  1 drivers
+v0x575456adbbf0_0 .net "h", 0 0, L_0x575456adc250;  1 drivers
+v0x575456adbcc0_0 .net "i", 0 0, L_0x575456adc350;  1 drivers
+S_0x575456a8b600 .scope module, "mygate" "gate" 2 4, 3 1 0, S_0x575456a8b470;
+ .timescale 0 0;
+    .port_info 0 /INPUT 1 "a";
+    .port_info 1 /INPUT 1 "b";
+    .port_info 2 /OUTPUT 1 "OR";
+    .port_info 3 /OUTPUT 1 "AND";
+    .port_info 4 /OUTPUT 1 "NAND";
+    .port_info 5 /OUTPUT 1 "NOR";
+    .port_info 6 /OUTPUT 1 "NOT";
+    .port_info 7 /OUTPUT 1 "XOR";
+    .port_info 8 /OUTPUT 1 "XNOR";
+L_0x575456adbd90 .functor OR 1, v0x575456adb680_0, v0x575456adb740_0, C4<0>, C4<0>;
+L_0x575456adbea0 .functor AND 1, v0x575456adb680_0, v0x575456adb740_0, C4<1>, C4<1>;
+L_0x575456adbf60 .functor NAND 1, v0x575456adb680_0, v0x575456adb740_0, C4<1>, C4<1>;
+L_0x575456adc140 .functor NOR 1, v0x575456adb680_0, v0x575456adb740_0, C4<0>, C4<0>;
+L_0x575456adc1e0 .functor NOT 1, v0x575456adb680_0, C4<0>, C4<0>, C4<0>;
+L_0x575456adc250 .functor XOR 1, v0x575456adb680_0, v0x575456adb740_0, C4<0>, C4<0>;
+L_0x575456adc350 .functor XNOR 1, v0x575456adb680_0, v0x575456adb740_0, C4<0>, C4<0>;
+v0x575456a8c530_0 .net "AND", 0 0, L_0x575456adbea0;  alias, 1 drivers
+v0x575456a8b9d0_0 .net "NAND", 0 0, L_0x575456adbf60;  alias, 1 drivers
+v0x575456adaff0_0 .net "NOR", 0 0, L_0x575456adc140;  alias, 1 drivers
+v0x575456adb090_0 .net "NOT", 0 0, L_0x575456adc1e0;  alias, 1 drivers
+v0x575456adb150_0 .net "OR", 0 0, L_0x575456adbd90;  alias, 1 drivers
+v0x575456adb260_0 .net "XNOR", 0 0, L_0x575456adc350;  alias, 1 drivers
+v0x575456adb320_0 .net "XOR", 0 0, L_0x575456adc250;  alias, 1 drivers
+v0x575456adb3e0_0 .net "a", 0 0, v0x575456adb680_0;  1 drivers
+v0x575456adb4a0_0 .net "b", 0 0, v0x575456adb740_0;  1 drivers
+    .scope S_0x575456a8b470;
+T_0 ;
+    %vpi_call 2 6 "$display", "a\011b\011OR\011AND\011NAND\011NOR\011NOT\011XOR\011XNOR\012" {0 0 0};
+    %vpi_call 2 7 "$monitor", "%b\011%b\011%b\011%b\011%b\011%b\011%b\011%b\011%b", v0x575456adb680_0, v0x575456adb740_0, v0x575456adb7e0_0, v0x575456adb8e0_0, v0x575456adb9b0_0, v0x575456adba50_0, v0x575456adbb20_0, v0x575456adbbf0_0, v0x575456adbcc0_0 {0 0 0};
+    %vpi_call 2 8 "$dumpfile", "test.vcd" {0 0 0};
+    %vpi_call 2 9 "$dumpvars" {0 0 0};
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x575456adb680_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x575456adb740_0, 0, 1;
+    %delay 10, 0;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x575456adb680_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x575456adb740_0, 0, 1;
+    %delay 10, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x575456adb680_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x575456adb740_0, 0, 1;
+    %delay 10, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x575456adb680_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x575456adb740_0, 0, 1;
+    %delay 10, 0;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x575456adb680_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x575456adb740_0, 0, 1;
+    %delay 10, 0;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "testbench1.v";
+    "designbench1.v";
